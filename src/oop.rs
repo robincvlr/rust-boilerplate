@@ -49,3 +49,15 @@ pub mod oop {
     }
 
 }
+
+
+#[test]
+fn test_stakeholder_rename_firstname() {
+    let mut stakeholder_engineer = oop::Stakeholder {
+        first_name: String::from("Zinedine"),
+        last_name: String::from("Zidane"),
+        role: oop::StakeholderRole::Engineer,
+    };
+    stakeholder_engineer.rename(Some("Emmanuel".to_string()), None);
+    assert_eq!(stakeholder_engineer.first_name, "Emmanuel".to_string())
+}
