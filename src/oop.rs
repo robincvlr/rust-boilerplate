@@ -9,7 +9,7 @@ pub mod oop {
     impl StakeholderRole {
 
         fn as_str(&self) -> &'static str {
-            match *self { // *self has type Direction
+            match *self {
                 StakeholderRole::Engineer => "Engineer",
                 StakeholderRole::Business => "Business",
                 StakeholderRole::ProjectManager => "ProjectManager",
@@ -51,13 +51,18 @@ pub mod oop {
 }
 
 
-#[test]
-fn test_stakeholder_rename_firstname() {
-    let mut stakeholder_engineer = oop::Stakeholder {
-        first_name: String::from("Zinedine"),
-        last_name: String::from("Zidane"),
-        role: oop::StakeholderRole::Engineer,
-    };
-    stakeholder_engineer.rename(Some("Emmanuel".to_string()), None);
-    assert_eq!(stakeholder_engineer.first_name, "Emmanuel".to_string())
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_stakeholder_rename_firstname() {
+        let mut stakeholder_engineer = oop::Stakeholder {
+            first_name: String::from("Zinedine"),
+            last_name: String::from("Zidane"),
+            role: oop::StakeholderRole::Engineer,
+        };
+        stakeholder_engineer.rename(Some("Emmanuel".to_string()), None);
+        assert_eq!(stakeholder_engineer.first_name, "Emmanuel".to_string())
+    }
 }
